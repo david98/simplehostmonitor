@@ -1,7 +1,9 @@
 import multiping
-from datetime import datetime
+import smtplib
+from email.mime.text import MIMEText
 import sys
 import time
+from configparser import ConfigParser
 
 
 def curr_millis() -> int:
@@ -15,16 +17,44 @@ class SimpleHostMonitor:
     ERROR_HIGH_RTT = 'High RTT detected, host may be unresponsive.'
     ERROR_NO_RESPONSE = 'Host is unresponsive.'
 
-    def __init__(self, host: str, max_rtt: int, max_retries: int, period: int):
-        self.host: str = host
-        self.max_rtt: int = max_rtt
-        self.max_retries: int = max_retries
-        self.period: int = period
+    def __init__(self, configuration_file_name: str):
+        config = ConfigParser()
+        config.read(configuration_file_name)
+
+        self.host: str = config.get('monitoring_target', 'ip_address')
+        self.max_rtt: int = int(config.get('monitoring_target', 'max_rtt'))
+        self.max_retries: int = int(config.get('monitoring_target', 'max_allowed_failures'))
+        self.period: int = int(config.get('monitoring_target', 'period'))
+
+        self.mailjet_public_key: str = config.get('email', 'mailjet_public_key')
+        self.mailjet_secret_key: str = config.get('email', 'mailjet_secret_key')
+        self.sender_address: str = config.get('email', 'sender_address')
+        self.send_email_to: str = config.get('email', 'send_email_to')
         self.last_ping: int = curr_millis()
+        self.alarm_triggered: bool = False
+
+    def send_email(self, subject: str, message: str):
+
+        message = MIMEText(message)
+
+        # me == the sender's email address
+        # you == the recipient's email address
+        message['Subject'] = subject
+        message['From'] = self.sender_address
+        message['To'] = self.send_email_to
+
+        # Send the message via our own SMTP server, but don't include the
+        # envelope header.
+        s = smtplib.SMTP('in-v3.mailjet.com')
+        s.login(self.mailjet_public_key, self.mailjet_secret_key)
+        s.sendmail(self.sender_address, [self.send_email_to], message.as_string())
+        s.quit()
 
     def send_alert(self, message: str):
-        print(message)
-        pass
+        if not self.alarm_triggered:
+            self.alarm_triggered = True
+            print(message)
+            self.send_email(message, message)
 
     def run(self):
         while True:
@@ -40,19 +70,17 @@ class SimpleHostMonitor:
             else:
                 for addr, rtt in responses.items():
                     rtt = rtt * 1000
-                    print(rtt)
                     if rtt > self.max_rtt:
                         self.send_alert(SimpleHostMonitor.ERROR_HIGH_RTT)
+                    else:
+                        self.alarm_triggered = False
 
             self.last_ping = curr_millis()
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 5:
-        print('Usage: python3.7 simplehostmonitor.py <HOST> <MAX_RTT> <MAX_RETRIES> <PERIOD>')
-    else:
-        monitor = SimpleHostMonitor(sys.argv[1], int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]))
-        monitor.run()
+    monitor = SimpleHostMonitor('simplehostmonitor.conf')
+    monitor.run()
 
 
 
