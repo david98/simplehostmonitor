@@ -17,5 +17,6 @@ by clicking on *Clone or download* -> *Download ZIP*
     max_rtt = MAXIMUM PING IN MS  
     max_allowed_failures = HOW MANY FAILURES BEFORE TRIGGERING AN ALARM  
     period = HOW MANY MS BETWEEN CHECKS
-4. Run `python3.7 simplehostmonitor.py`
+4. Run `sudo python3.7 simplehostmonitor.py` on Linux. On Windows, run CMD or Powershell as admin and then run
+`python3.7 simplehostmonitor.py`
 5. Log files will be created inside the program's directory.
