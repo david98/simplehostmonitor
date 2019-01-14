@@ -2,6 +2,7 @@ import multiping
 import smtplib
 from email.mime.text import MIMEText
 import sys
+import datetime
 import time
 from configparser import ConfigParser
 
@@ -32,6 +33,9 @@ class SimpleHostMonitor:
         self.send_email_to: str = config.get('email', 'send_email_to')
         self.last_ping: int = curr_millis()
         self.alarm_triggered: bool = False
+        self.logfile_name = str(self.last_ping) + '.log'
+        f = open(self.logfile_name, 'a+')
+        f.close()
 
     def send_email(self, subject: str, message: str):
 
@@ -50,11 +54,32 @@ class SimpleHostMonitor:
         s.sendmail(self.sender_address, [self.send_email_to], message.as_string())
         s.quit()
 
+    def add_to_log(self, line: str):
+        log_file = open(self.logfile_name, 'a+')
+        log_file.write(line)
+        log_file.close()
+
     def send_alert(self, message: str):
         if not self.alarm_triggered:
             self.alarm_triggered = True
             print(message)
-            self.send_email(message, message)
+            log_line: str = '[' + time.strftime("%Y-%m-%d %H:%M") + '] '
+            email_subject: str = 'Simple Host Monitor | ' + self.host + ' | '
+            email_message: str = 'Hello, \n\n'
+            if message == SimpleHostMonitor.ERROR_NO_RESPONSE:
+                log_line = log_line + 'Host did not reply to ping for more than ' + str(self.max_retries) + ' times.'
+                email_subject = email_subject + SimpleHostMonitor.ERROR_NO_RESPONSE
+                email_message = email_message + 'Host did not reply to ping for more than ' + str(self.max_retries) + \
+                                ' times.\nThis incident happened at ' + time.strftime("%Y-%m-%d %H:%M") + '.\n'
+            elif message == SimpleHostMonitor.ERROR_HIGH_RTT:
+                log_line = log_line + 'Maximum RTT threshold (' + str(self.max_rtt) + ' ms) exceeded for more than ' + str(self.max_retries) + ' times.'
+                email_subject = email_subject + SimpleHostMonitor.ERROR_HIGH_RTT
+                email_message = email_message + 'Maximum RTT threshold (' + str(self.max_rtt) + \
+                               ' ms) exceeded for more than ' + str(self.max_retries) + ' times.\n' \
+                                                                                        'This incident happened at ' + \
+                               time.strftime("%Y-%m-%d %H:%M") + '.\n'
+            self.send_email(email_subject, email_message)
+            self.add_to_log(log_line)
 
     def run(self):
         while True:
