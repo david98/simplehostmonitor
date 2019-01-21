@@ -5,6 +5,7 @@ import time
 from configparser import ConfigParser, NoOptionError
 import dns.resolver
 import socket
+import requests
 
 
 def is_valid_ipv4_address(address):
@@ -64,6 +65,10 @@ class SimpleHostMonitor:
 
         self.mailjet_public_key: str = config.get('email', 'mailjet_public_key')
         self.mailjet_secret_key: str = config.get('email', 'mailjet_secret_key')
+        self.mail_mode = config.get('email', 'mode')
+        if self.mail_mode != 'HTTP' and self.mail_mode != 'SMTP':
+            print('Mail mode must be HTTP or SMTP. Found: {0}'.format(self.mail_mode))
+            exit(1)
         self.sender_address: str = config.get('email', 'sender_address')
         self.send_email_to: str = config.get('email', 'send_email_to')
         self.last_ping: int = curr_millis()
@@ -74,21 +79,58 @@ class SimpleHostMonitor:
         f.close()
 
     def send_email(self, subject: str, message: str):
+        if self.mail_mode == 'SMTP':
+            message = MIMEText(message)
 
-        message = MIMEText(message)
+            # me == the sender's email address
+            # you == the recipient's email address
+            message['Subject'] = subject
+            message['From'] = self.sender_address
+            message['To'] = self.send_email_to
 
-        # me == the sender's email address
-        # you == the recipient's email address
-        message['Subject'] = subject
-        message['From'] = self.sender_address
-        message['To'] = self.send_email_to
-
-        # Send the message via our own SMTP server, but don't include the
-        # envelope header.
-        s = smtplib.SMTP('in-v3.mailjet.com')
-        s.login(self.mailjet_public_key, self.mailjet_secret_key)
-        s.sendmail(self.sender_address, [self.send_email_to], message.as_string())
-        s.quit()
+            # Send the message via our own SMTP server, but don't include the
+            # envelope header.
+            s = smtplib.SMTP('in-v3.mailjet.com')
+            s.login(self.mailjet_public_key, self.mailjet_secret_key)
+            s.sendmail(self.sender_address, [self.send_email_to], message.as_string())
+            s.quit()
+        elif self.mail_mode == 'HTTP':
+            headers = {'Content-type': 'application/json'}
+            '''
+            "Messages":[
+                {
+                        "From": {
+                                "Email": "$SENDER_EMAIL",
+                                "Name": "Me"
+                        },
+                        "To": [
+                                {
+                                        "Email": "$RECIPIENT_EMAIL",
+                                        "Name": 
+                                }
+                        ],
+                        "Subject": "My first Mailjet Email!",
+                        "TextPart": "Greetings from Mailjet."
+                }
+        ]
+            '''
+            data = {
+                'Messages': [{
+                    'From': {
+                        'Email': self.sender_address,
+                        'Name': 'Simple Host Monitor'
+                    },
+                    'To': [{
+                        'Email': self.send_email_to,
+                        'Name': ''
+                    }],
+                    'Subject': subject,
+                    'TextPart': message
+                }]
+            }
+            resp = requests.post('https://api.mailjet.com/v3.1/send', headers=headers, data=data,
+                                 auth=(self.mailjet_public_key, self.mailjet_secret_key))
+            pass
 
     def add_to_log(self, line: str):
         log_file = open(self.logfile_name, 'a+')
