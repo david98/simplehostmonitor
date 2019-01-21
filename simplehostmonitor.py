@@ -82,14 +82,10 @@ class SimpleHostMonitor:
         if self.mail_mode == 'SMTP':
             message = MIMEText(message)
 
-            # me == the sender's email address
-            # you == the recipient's email address
             message['Subject'] = subject
             message['From'] = self.sender_address
             message['To'] = self.send_email_to
 
-            # Send the message via our own SMTP server, but don't include the
-            # envelope header.
             s = smtplib.SMTP('in-v3.mailjet.com')
             s.login(self.mailjet_public_key, self.mailjet_secret_key)
             s.sendmail(self.sender_address, [self.send_email_to], message.as_string())
