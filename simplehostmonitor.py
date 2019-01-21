@@ -96,24 +96,6 @@ class SimpleHostMonitor:
             s.quit()
         elif self.mail_mode == 'HTTP':
             headers = {'Content-type': 'application/json'}
-            '''
-            "Messages":[
-                {
-                        "From": {
-                                "Email": "$SENDER_EMAIL",
-                                "Name": "Me"
-                        },
-                        "To": [
-                                {
-                                        "Email": "$RECIPIENT_EMAIL",
-                                        "Name": 
-                                }
-                        ],
-                        "Subject": "My first Mailjet Email!",
-                        "TextPart": "Greetings from Mailjet."
-                }
-        ]
-            '''
             data = {
                 'Messages': [{
                     'From': {

@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0317cdeb-6121-4880-bcb8-5ff9e750c3d4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplehostmonitor.conf" beforeDir="false" afterPath="$PROJECT_DIR$/simplehostmonitor.conf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simplehostmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/simplehostmonitor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,27 +57,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/simplehostmonitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-813">
-              <caret line="69" column="84" selection-start-line="69" selection-start-column="84" selection-end-line="69" selection-end-column="84" />
+            <state relative-caret-position="23">
+              <caret line="97" column="58" selection-start-line="97" selection-start-column="58" selection-end-line="97" selection-end-column="58" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <marker date="1548082617195" expanded="true" signature="593:638" ph="..." />
-                <marker date="1548082617195" expanded="true" signature="748:749" ph="..." />
-                <marker date="1548082617195" expanded="true" signature="4973:5089" ph="..." />
-                <marker date="1548082617195" expanded="true" signature="6826:6832" ph="..." />
+                <marker date="1548083067945" expanded="true" signature="593:638" ph="..." />
+                <marker date="1548083067945" expanded="true" signature="748:749" ph="..." />
+                <marker date="1548083067945" expanded="true" signature="4337:4453" ph="..." />
+                <marker date="1548083067945" expanded="true" signature="6190:6196" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/simplehostmonitor.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+            <state relative-caret-position="253">
+              <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -113,9 +111,9 @@
       <list>
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/simplehostmonitor.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/simplehostmonitor.conf" />
+        <option value="$PROJECT_DIR$/simplehostmonitor.py" />
       </list>
     </option>
   </component>
@@ -251,24 +249,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/simplehostmonitor.py">
+    <entry file="file://$PROJECT_DIR$/simplehostmonitor.conf">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-813">
-          <caret line="69" column="84" selection-start-line="69" selection-start-column="84" selection-end-line="69" selection-end-column="84" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <marker date="1548082617195" expanded="true" signature="593:638" ph="..." />
-            <marker date="1548082617195" expanded="true" signature="748:749" ph="..." />
-            <marker date="1548082617195" expanded="true" signature="4973:5089" ph="..." />
-            <marker date="1548082617195" expanded="true" signature="6826:6832" ph="..." />
-          </folding>
+        <state relative-caret-position="253">
+          <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/simplehostmonitor.conf">
+    <entry file="file://$PROJECT_DIR$/simplehostmonitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+        <state relative-caret-position="23">
+          <caret line="97" column="58" selection-start-line="97" selection-start-column="58" selection-end-line="97" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+            <marker date="1548083067945" expanded="true" signature="593:638" ph="..." />
+            <marker date="1548083067945" expanded="true" signature="748:749" ph="..." />
+            <marker date="1548083067945" expanded="true" signature="4337:4453" ph="..." />
+            <marker date="1548083067945" expanded="true" signature="6190:6196" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
