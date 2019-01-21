@@ -1,8 +1,6 @@
 import multiping
 import smtplib
 from email.mime.text import MIMEText
-import sys
-import datetime
 import time
 from configparser import ConfigParser
 
@@ -57,7 +55,7 @@ class SimpleHostMonitor:
 
     def add_to_log(self, line: str):
         log_file = open(self.logfile_name, 'a+')
-        log_file.write(line)
+        log_file.write(line + '\n')
         log_file.close()
 
     def send_alert(self, message: str):

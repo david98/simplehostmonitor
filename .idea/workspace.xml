@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0317cdeb-6121-4880-bcb8-5ff9e750c3d4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplehostmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/simplehostmonitor.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,10 +15,11 @@
     <session id="191236803">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -40,7 +42,7 @@
           <entry key="conf" value="310" />
           <entry key="gitignore" value="21" />
           <entry key="md" value="1123" />
-          <entry key="py" value="3860" />
+          <entry key="py" value="3866" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
@@ -48,24 +50,24 @@
         <counts>
           <entry key="Markdown" value="1123" />
           <entry key="PLAIN_TEXT" value="332" />
-          <entry key="Python" value="3860" />
+          <entry key="Python" value="3866" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/simplehostmonitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
+            <state relative-caret-position="69">
+              <caret line="57" column="35" lean-forward="true" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <marker date="1547475221488" expanded="true" signature="173:218" ph="..." />
-                <marker date="1547475221488" expanded="true" signature="328:329" ph="..." />
-                <marker date="1547475221488" expanded="true" signature="2042:2151" ph="..." />
-                <marker date="1547475221488" expanded="true" signature="3888:3894" ph="..." />
+                <marker date="1548061119044" expanded="true" signature="146:191" ph="..." />
+                <marker date="1548061119044" expanded="true" signature="301:302" ph="..." />
+                <marker date="1548061119044" expanded="true" signature="2015:2131" ph="..." />
+                <marker date="1548061119044" expanded="true" signature="3868:3874" ph="..." />
               </folding>
             </state>
           </provider>
@@ -80,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="460">
+              <first_editor relative-caret-position="371">
                 <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
               </first_editor>
               <second_editor />
@@ -109,9 +111,9 @@
       <list>
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/simplehostmonitor.py" />
         <option value="$PROJECT_DIR$/simplehostmonitor.conf" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/simplehostmonitor.py" />
       </list>
     </option>
   </component>
@@ -122,10 +124,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="208" />
+    <option name="x" value="212" />
     <option name="y" value="348" />
-    <option name="width" value="1242" />
-    <option name="height" value="689" />
+    <option name="width" value="1232" />
+    <option name="height" value="688" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -182,10 +184,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1920" height="1044" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16008538" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16168623" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -215,67 +216,19 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/1547473477418.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="44" lean-forward="true" selection-start-column="44" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1547473823848.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" selection-start-column="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1547473916281.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1547474033081.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1547474093394.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1547474204163.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="19" lean-forward="true" selection-start-column="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/1547474760287.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2019-01-14-15-09.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2019-01-14-15-12.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/1547473477418.log" />
+    <entry file="file://$PROJECT_DIR$/1547473823848.log" />
+    <entry file="file://$PROJECT_DIR$/1547473916281.log" />
+    <entry file="file://$PROJECT_DIR$/1547474033081.log" />
+    <entry file="file://$PROJECT_DIR$/1547474093394.log" />
+    <entry file="file://$PROJECT_DIR$/1547474204163.log" />
+    <entry file="file://$PROJECT_DIR$/1547474760287.log" />
+    <entry file="file://$PROJECT_DIR$/2019-01-14-15-09.log" />
+    <entry file="file://$PROJECT_DIR$/2019-01-14-15-12.log" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
           <caret line="106" column="5" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simplehostmonitor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-            <marker date="1547475221488" expanded="true" signature="173:218" ph="..." />
-            <marker date="1547475221488" expanded="true" signature="328:329" ph="..." />
-            <marker date="1547475221488" expanded="true" signature="2042:2151" ph="..." />
-            <marker date="1547475221488" expanded="true" signature="3888:3894" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -292,10 +245,24 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="460">
+          <first_editor relative-caret-position="371">
             <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simplehostmonitor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="57" column="35" lean-forward="true" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+            <marker date="1548061119044" expanded="true" signature="146:191" ph="..." />
+            <marker date="1548061119044" expanded="true" signature="301:302" ph="..." />
+            <marker date="1548061119044" expanded="true" signature="2015:2131" ph="..." />
+            <marker date="1548061119044" expanded="true" signature="3868:3874" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
