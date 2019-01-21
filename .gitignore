@@ -105,3 +105,4 @@ venv.bak/
 
 *.conf
 *.log
+.idea/
