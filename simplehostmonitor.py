@@ -2,7 +2,24 @@ import multiping
 import smtplib
 from email.mime.text import MIMEText
 import time
-from configparser import ConfigParser
+from configparser import ConfigParser, NoOptionError
+import dns.resolver
+import socket
+
+
+def is_valid_ipv4_address(address):
+    try:
+        socket.inet_pton(socket.AF_INET, address)
+    except AttributeError:  # no inet_pton here, sorry
+        try:
+            socket.inet_aton(address)
+        except socket.error:
+            return False
+        return address.count('.') == 3
+    except socket.error:  # not a valid address
+        return False
+
+    return True
 
 
 def curr_millis() -> int:
@@ -20,7 +37,27 @@ class SimpleHostMonitor:
         config = ConfigParser()
         config.read(configuration_file_name)
 
-        self.host: str = config.get('monitoring_target', 'ip_address')
+        self.dns_resolver = dns.resolver.Resolver()
+        self.dns_resolver.nameservers = ['8.8.8.8', '8.8.4.4']
+
+        try:
+            ip_address: str = config.get('monitoring_target', 'ip_address')
+            if is_valid_ipv4_address(ip_address):
+                self.host = ip_address
+            else:
+                print('Invalid IP address: {0}'.format(ip_address))
+                exit(1)
+        except NoOptionError:
+            try:
+                domain_name: str = config.get('monitoring_target', 'domain_name')
+                self.host: str = str(self.dns_resolver.query(domain_name, 'a')[0])
+            except NoOptionError:
+                print('Missing ip_address or domain_name.')
+                exit(1)
+            except dns.resolver.NXDOMAIN:
+                print('Invalid target: {0}'.format(domain_name))
+                exit(1)
+
         self.max_rtt: int = int(config.get('monitoring_target', 'max_rtt'))
         self.max_retries: int = int(config.get('monitoring_target', 'max_allowed_failures'))
         self.period: int = int(config.get('monitoring_target', 'period'))
@@ -84,6 +121,7 @@ class SimpleHostMonitor:
                 self.add_to_log(log_line)
 
     def run(self):
+        print('Starting monitor for {0}'.format(self.host))
         while True:
             while (curr_millis() - self.last_ping) < self.period:
                 pass
